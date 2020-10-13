@@ -6,6 +6,10 @@
     <link rel="stylesheet" href="styles/bootstrap.min.css">
     <style>
       .message { font-size: 1.3em; font-weight: bold; }
+      .alert-danger { background-color: inherit; }
+      input.alert-danger { border-color: #a94442; color: inherit; background-color: inherit; }
+      .alert-success { background-color: inherit; }
+      input.alert-success { border-color: #3c763d; color: inherit; background-color: inherit; }
     </style>
   </head>
 <body>
@@ -15,13 +19,14 @@
          <div class="form-group">
              <input id="lunch-menu" type="text"
              placeholder="list comma separated dishes you usually have for lunch (I do NOT count empty items)"
-             class="form-control" ng-model="theList">
+             class="form-control {{inputClasses}}"
+             ng-model="theList" ng-focus="focusInput()">
          </div>
          <!-- I do not count empty items in the comma-separated list -->
          <div class="form-group">
              <button class="btn btn-default" ng-click="doIt()">Check If Too Much</button>
          </div>
-         <div class="form-group message">
+         <div class="form-group message {{msgClasses}}">
            {{msgPlaceholder}}
          </div>
    </div>
