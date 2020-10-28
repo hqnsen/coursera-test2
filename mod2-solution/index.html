@@ -20,6 +20,9 @@
       button > span {
         color: green;
       }
+      li > input {
+        width: 60px;
+      }
     </style>
   </head>
 <body>
@@ -33,7 +36,9 @@
      <h2>To Buy:</h2>
      <ul>
        <li ng-repeat="item in toBuy.items">
-        <button ng-click="toBuy.buy($index);" class="btn btn-default margin-right-md"><span class="glyphicon glyphicon-ok"></span> Bought</button> Buy {{item.quantity}} {{item.name}}
+        <button ng-click="toBuy.buy($index);" class="btn btn-default margin-right-md"><span class="glyphicon glyphicon-ok"></span> Bought</button>
+        Buy {{item.quantity}} {{item.name}} ({{item.pricePerItem | ngDollars}})
+        <input type="text" ng-model="item.quantity" placeholder="quantity">
        </li>
      </ul>
      <div ng-if="toBuy.items.length < 1" class="emptyMessage">Everything is bought!</div>
@@ -44,7 +49,7 @@
      <h2>Already Bought:</h2>
      <ul>
        <li ng-repeat="item in bought.items">
-         Bought {{item.quantity}} {{item.name}}
+         Bought {{item.quantity}} of {{item.name}} for total price of {{(item.quantity*item.pricePerItem) | ngDollars}}
        </li>
      </ul>
      <div ng-if="bought.items.length < 1" class="emptyMessage">Nothing bought yet.</div>
