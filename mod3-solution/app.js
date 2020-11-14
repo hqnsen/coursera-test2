@@ -49,12 +49,8 @@
       }
     };
     ctrl.narrowIt = function () {
-      console.log("called narrowIt");
       var menuMatchesPromise = MenuSearchService.getMatchedMenuItems(ctrl.searchTerm);
-      console.log("returned from getMatchedMenuItems");
       menuMatchesPromise.then(function (response) {
-        console.log("getMatchedMenuItems has result:");
-        console.log(response);
         ctrl.found = response;
       }).catch(function (error) {
         console.log(error);
@@ -70,14 +66,11 @@
         method: "GET",
         url: MenuItemsUrl
       }).then(function(result) {
-        console.log("http has result:");
-        console.log(result);
         // process results and only keep items that match
         var foundItems = [];
         for (var i = 0; i < result.data.menu_items.length; i++) {
           var description = result.data.menu_items[i].description;
           if (description.toLowerCase().indexOf(searchTerm.toLowerCase()) !== -1) {
-            //console.log(description);
             foundItems.push(result.data.menu_items[i]);
           }
         }
