@@ -1,5 +1,6 @@
 body {
   font-size: 1.2em;
+  font-family: sans-serif;
 }
 
 div.tabs > a, div.tabs > button {
@@ -13,4 +14,5 @@ div.tabs {
 
 .activeTab {
   font-weight: bold;
+  text-transform: uppercase;
 }
