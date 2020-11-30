@@ -1,11 +1,12 @@
 (function () {
 'use strict';
 
-angular.module('data')
-.component('items', {
-    templateUrl: 'src/items.template.html',
+angular.module('MenuApp')
+.component('itemsbycat', {
+    templateUrl: 'src/items.component.template.html',
     bindings: {
-        items: '<'
+        items: '<',
+        categoryName: '<'
     }
 });
 
