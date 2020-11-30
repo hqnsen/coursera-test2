@@ -16,24 +16,24 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
     // Home page
     .state('home', {
         url: '/',
-        templateUrl: 'src/shoppinglist/templates/home.template.html'
+        templateUrl: 'src/home.template.html'
     })
 
-    // Premade list page
-    .state('mainList', {
-        url: '/main-list',
-        templateUrl: 'src/shoppinglist/templates/main-shoppinglist.template.html',
-        controller: 'MainShoppingListController as mainList',
+    // Show all categories page
+    .state('categories', {
+        url: '/categories',
+        templateUrl: 'src/categories.template.html',
+        controller: 'MenuDataController as menuData',
         resolve: {
-            items: ['ShoppingListService', function (ShoppingListService) {
-                return ShoppingListService.getItems();
+            items: ['MenuDataService', function (MenuDataService) {
+                return MenuDataService.getAllItems();
             }]
         }
     })
 
-    .state('mainList.itemDetail', {
-        url: '/item-detail/{itemId}',
-        templateUrl: 'src/shoppinglist/templates/item-detail.template.html',
+    .state('categories.items', {
+        url: '/items/{itemId}',
+        templateUrl: 'src/items.template.html',
         controller: "ItemDetailController as itemDetail"
     });
 
