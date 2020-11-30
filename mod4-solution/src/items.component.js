@@ -2,11 +2,11 @@
 'use strict';
 
 angular.module('MenuApp')
-.component('itemsbycat', {
+.component('items', {
     templateUrl: 'src/items.component.template.html',
     bindings: {
         items: '<',
-        categoryName: '<'
+        categoryname: '<'
     }
 });
 
