@@ -30,7 +30,14 @@ function RoutesConfig($stateProvider, $urlRouterProvider) {
     .state('items', {
         url: '/items/{itemId}',
         templateUrl: 'src/items.template.html',
-        controller: "ItemDetailController as itemDetail"
+        controller: "ItemsController as itemsByCat",
+        resolve: {
+            items: ['$stateParams', 'MenuDataService', function ($stateParams, MenuDataService) {
+                var shortName = $stateParams.itemId;
+                console.log(shortName);
+                return MenuDataService.getItemsForCategory(shortName);
+            }]
+        }
     });
 
 }
