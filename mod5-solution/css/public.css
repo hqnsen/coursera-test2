@@ -113,6 +113,31 @@ h3.menu-item-title {
 }
 /* END SINGLE CATEGORY PAGE */
 
+#signupformContainer {
+  margin: 0 auto;
+  width: 300px;
+}
+
+#signupform input[type=text], #signupform input[type=email] {
+  margin: 5px;
+  color: #333;
+}
+
+#signupform button:hover {
+  background-color: #000;
+}
+#signupform button {
+  background-color: #222;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 8px 50px;
+}
+
+#signupform span {
+  display: block;
+}
+
 
 /********** Large devices only **********/
 @media (min-width: 1200px) {
