@@ -2,8 +2,15 @@
     <h2>Sign Up</h2>
     <fieldset>
         <form id='signupform' name='signupform' novalidate>
+            <br>
+            <button
+                ng-disabled="signupform.$invalid"
+                ng-click="signup.submit()">Submit</button>
+            <span ng-if="signup.saved">Your information has been saved</span>
+            <br>
             <input type="text" name="firstname" placeholder="First name"
                 ng-model="signup.firstname"
+                ng-focus="signup.saved=false"
                 required>
                 <span ng-if="signupform.firstname.$error.required && signupform.firstname.$touched">
                     First name is required
@@ -11,6 +18,7 @@
                 <br>
             <input type="text" name="lastname" placeholder="Last name"
                 ng-model="signup.lastname"
+                ng-focus="signup.saved=false"
                 required>
                 <span ng-if="signupform.lastname.$error.required && signupform.lastname.$touched">
                     Last name is required
@@ -18,6 +26,7 @@
                 <br>
             <input type="email" name="email" placeholder="Email address"
                 ng-model="signup.email"
+                ng-focus="signup.saved=false"
                 required>
                 <span ng-if="signupform.email.$invalid && signupform.email.$touched">
                     Must be a valid email address: handle@domain format
@@ -25,6 +34,7 @@
                 <br>
             <input type="text" name="phone" placeholder="Phone ###-###-####"
                 ng-model="signup.phone"
+                ng-focus="signup.saved=false"
                 pattern="(\d{3})-(\d{3})-(\d{4})">
                 <span ng-if="signupform.phone.$invalid && signupform.phone.$touched">
                     Phone must be in the format ###-###-####.
@@ -32,14 +42,15 @@
                 <br>
             <input type="text" name="favefood" placeholder="Favorite dish"
                 ng-model="signup.favefood"
+                ng-blur="signup.checkFavefood()"
+                ng-focus="signup.saved=false"
                 required>
                 <span ng-if="signupform.favefood.$error.required && signupform.favefood.$touched">
-                    Must enter a valid short name
+                    Fave food required
                 </span>
-                <br>
-            <button
-                ng-disabled="signupform.$invalid"
-                ng-click="signup.submit()">Submit</button>
+                <span ng-if="signup.queryMade && !signup.validFavefood">
+                    No such menu number exists
+                </span>
         </form>
     </fieldset>
 </div>

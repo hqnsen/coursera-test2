@@ -1,0 +1,16 @@
+<div id="myinfoContainer" class="container"  ng-controller="MyinfoController as myinfo">
+    <h2>Your saved information</h2>
+    <div ng-if="myinfo.data">
+        <h3>Contact data</h3>
+        <div>{{myinfo.data.firstname}} {{myinfo.data.lastname}}</div>
+        <div>{{myinfo.data.email}}</div>
+        <div>{{myinfo.data.phone}}</div>
+        <h3>Favorite dish</h3>
+        <img class="img-responsive" width="250" height="150" ng-src="{{myinfo.basePath}}/images/{{myinfo.data.favefoodshortname}}.jpg" alt="{{myinfo.data.favefoodname}}">
+        <div>{{myinfo.data.favefoodname}}</div>
+        <div>{{myinfo.data.favefooddescription}}</div>
+    </div>
+    <div ng-if="!myinfo.data">
+        Not signed up yet. <a ui-sref="public.signup">Sign up now!</a>
+    </div>
+</div>
